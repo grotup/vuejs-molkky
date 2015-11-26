@@ -1,0 +1,42 @@
+<html>
+<head>
+	<title>Molkky Score</title>
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/molkky.css">
+	<script src="bower_components/vue/dist/vue.min.js"></script>
+	<script src="js/app.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="header clearfix">
+			<nav>
+				<ul class="nav nav-pills pull-right">
+					<li role="presentation" class="active"><a href="#">Home</a></li>
+					<li role="presentation"><a href="#">About</a></li>
+					<li role="presentation"><a href="#">Contact</a></li>
+				</ul>
+			</nav>
+			<h3 class="text-muted">Molkky Scores</h3>
+		</div>
+		<div id="molkky">
+			<div class="row">
+				<ul class="list-group">
+					<li v-for="player in players" class="list-group-item">
+						{{player.name}}
+						<span class="badge">{{player.score}}</span>
+					</li>
+				</ul>
+			</div>
+			<div class="row">
+				<button class="btn btn-default" v-on:click="resetScores">Reset</button>
+			</div>
+			<div class="row">
+				<input v-bind:readonly="started" type="text" v-model="newPlayerName" class="form-control" id="name" placeHolder="Ajouter un joueur">
+				<button v-bind:readonly="started" class="btn btn-default" v-on:click="addPlayer">Ajouter un joueur</button>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
